@@ -2,7 +2,7 @@
 # -- BEGIN LICENSE BLOCK ----------------------------------
 #
 # This file is part of flatPages, a plugin for DotClear2.
-# Copyright (c) 2010 Pep.
+# Copyright (c) 2010 Pep and contributors.
 # Licensed under the GPL version 2.0 license.
 # See LICENSE file or
 # http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -87,8 +87,8 @@ if (!empty($_REQUEST['id']))
 		$post_notes = $post->post_notes;
 		$post_status = $post->post_status;
 		$post_selected = (boolean) $post->post_selected;
-		$post_open_comment = false;
-		$post_open_tb = false;
+		$post_open_comment = (boolean) $post->post_open_comment;
+		$post_open_tb = (boolean) $post->post_open_tb;
 		
 		$page_title = __('Edit page');
 		
@@ -113,6 +113,8 @@ if (!empty($_POST) && $can_edit_post)
 	$post_content = $_POST['post_content'];
 	$post_title = $_POST['post_title'];
 	$page_template = $_POST['page_template'];
+	$post_open_comment = !empty($_POST['post_open_comment']);
+	$post_open_tb = !empty($_POST['post_open_tb']);
 		
 	if (isset($_POST['post_status'])) {
 		$post_status = (integer) $_POST['post_status'];
@@ -162,8 +164,8 @@ if (!empty($_POST) && !empty($_POST['save']) && $can_edit_post)
 	$cur->post_notes = $post_notes;
 	$cur->post_status = $post_status;
 	$cur->post_selected = (integer)$post_selected;
-	$cur->post_open_comment = 0;
-	$cur->post_open_tb = 0;
+	$cur->post_open_comment = (integer) $post_open_comment;
+	$cur->post_open_tb = (integer) $post_open_tb;
 	
 	if (isset($_POST['post_url'])) {
 		$cur->post_url = $post_url;
@@ -287,7 +289,7 @@ if ($post_id && $post->post_status == 1) {
 	echo ' - <a id="post-preview" href="'.$post->getURL().'" class="button">'.__('View page').'</a>';
 } elseif ($post_id) {
 	$preview_url =
-	$core->blog->url.$core->url->getBase('flatpreview').'/'.
+	$core->blog->url.$core->url->getBase('flatpagepreview').'/'.
 	$core->auth->userID().'/'.
 	http::browserUID(DC_MASTER_KEY.$core->auth->userID().$core->auth->getInfo('user_pwd')).
 	'/'.$post->post_url;
@@ -328,8 +330,12 @@ if ($can_edit_post)
 	
 	'<p><label>'.__('Template:').dcPage::help('post','p_template').
 	form::field('page_template',10,255,html::escapeHTML($page_template),'maximal',3).
-	'</label></p>';
+	'</label></p>'.
 	
+	'<p><label class="classic">'.form::checkbox('post_open_comment',1,$post_open_comment,'',3).' '.
+	__('Accept comments').'</label></p>'.
+	'<p><label class="classic">'.form::checkbox('post_open_tb',1,$post_open_tb,'',3).' '.
+	__('Accept trackbacks').'</label></p>';	
 
 	echo	
 	'<div id="page_options">'.

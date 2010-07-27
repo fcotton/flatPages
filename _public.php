@@ -2,7 +2,7 @@
 # -- BEGIN LICENSE BLOCK ----------------------------------
 #
 # This file is part of flatPages, a plugin for DotClear2.
-# Copyright (c) 2010 Pep.
+# Copyright (c) 2010 Pep and contributors.
 # Licensed under the GPL version 2.0 license.
 # See LICENSE file or
 # http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -74,10 +74,16 @@ class flatpagesPublicBehaviors
 			}
 		}
 	}
+	
+	public static function initCommentsWikibar($modes)
+	{
+		$modes[] = 'flatpage';
+	}
 }
 
 $core->addBehavior('coreBlogGetPosts',    array('flatpagesPublicBehaviors','coreBlogGetPosts'));
 $core->addBehavior('publicBeforeDocument',array('flatpagesPublicBehaviors','addTplPath'));
 $core->addBehavior('templateBeforeBlock', array('flatpagesPublicBehaviors','templateBeforeBlock'));
 $core->addBehavior('sitemapsURLsCollect', array('flatpagesPublicBehaviors','sitemapsURLsCollect'));
+$core->addBehavior('initCommentsWikibar', array('flatpagesPublicBehaviors','initCommentsWikibar'));
 ?>
