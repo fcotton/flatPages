@@ -32,11 +32,32 @@ class flatpagesUrlHandlers extends dcUrlHandlers
 		$_ctx->posts = $core->blog->getPosts($params);
 		
 		if (!$_ctx->posts->isEmpty()) {
+			$post_id = $_ctx->posts->post_id;
+			$post_password = $_ctx->posts->post_password;
+		
+			if ($post_password != '' && !$_ctx->preview)	{
+				if (isset($_COOKIE['dc_passwd'])) {
+					$pwd_cookie = unserialize($_COOKIE['dc_passwd']);
+				}
+				else {
+					$pwd_cookie = array();
+				}
+				if ((!empty($_POST['password']) && $_POST['password'] == $post_password) ||
+					(isset($pwd_cookie[$post_id]) && $pwd_cookie[$post_id] == $post_password))	{
+					$pwd_cookie[$post_id] = $post_password;
+					setcookie('dc_passwd',serialize($pwd_cookie),0,'/');
+				}
+				else {
+					self::serveDocument('password-form.html','text/html',false);
+					return true;
+				}
+			}
+			
 			$tpl = $_ctx->posts->getSpecificTemplate();
 			if (!$tpl || !$core->tpl->getFilePath($tpl)) {
 				$tpl = 'flatpage.html';
 			}
-			$core->url->type = 'flatpage';
+			$core->url->type = $_ctx->current_mode = 'flatpage';
 			self::serveDocument($tpl);
 		}
 		else {
