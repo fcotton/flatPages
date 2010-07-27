@@ -12,6 +12,8 @@ if (!defined('DC_CONTEXT_ADMIN')) return;
 
 dcPage::check('pages,contentadmin');
 
+$redir_url = $p_url.'&do=edit';
+
 $post_id = '';
 $cat_id = '';
 $post_dt = '';
@@ -255,9 +257,10 @@ if (!empty($_POST['delete']) && $can_delete) {
 /* DISPLAY
 -------------------------------------------------------- */
 $default_tab = 'edit-entry';
-if (!$can_edit_post || !empty($_POST['preview'])) {
-	$default_tab = 'preview-entry';
+if (!empty($_GET['co'])) {
+	$default_tab = 'comments';
 }
+
 ?>
 <html>
 <head>
@@ -266,7 +269,7 @@ if (!$can_edit_post || !empty($_POST['preview'])) {
 echo dcPage::jsDatePicker().
 	dcPage::jsToolBar().
   	dcPage::jsModal().
-	dcPage::jsLoad(DC_ADMIN_URL.'?pf=flatPages/js/_page.js').
+	dcPage::jsLoad('js/_post.js').
 	dcPage::jsConfirmClose('entry-form').
 	# --BEHAVIOR-- adminRelatedHeaders
 	$core->callBehavior('adminFlatPagesHeaders').	
@@ -398,6 +401,159 @@ if ($can_edit_post)
 	echo '</fieldset></div>';		// End #entry-content
 	echo '</form>';
 	echo '</div>';
+}
+
+
+/* Comments and trackbacks
+-------------------------------------------------------- */
+if ($post_id)
+{
+	$params = array('post_id' => $post_id, 'order' => 'comment_dt ASC');
+	
+	$comments = $core->blog->getComments(array_merge($params,array('comment_trackback'=>0)));
+	$trackbacks = $core->blog->getComments(array_merge($params,array('comment_trackback'=>1)));
+	
+	# Actions combo box
+	$combo_action = array();
+	if ($can_edit_post && $core->auth->check('publish,contentadmin',$core->blog->id))
+	{
+		$combo_action[__('publish')] = 'publish';
+		$combo_action[__('unpublish')] = 'unpublish';
+		$combo_action[__('mark as pending')] = 'pending';
+		$combo_action[__('mark as junk')] = 'junk';
+	}
+	
+	if ($can_edit_post && $core->auth->check('delete,contentadmin',$core->blog->id))
+	{
+		$combo_action[__('delete')] = 'delete';
+	}
+	
+	$has_action = !empty($combo_action) && (!$trackbacks->isEmpty() || !$comments->isEmpty());
+	
+	echo
+	'<div id="comments" class="multi-part" title="'.__('Comments').'">';
+	
+	if ($has_action) {
+		echo '<form action="comments_actions.php" method="post">';
+	}
+	
+	echo '<h3>'.__('Trackbacks').'</h3>';
+	
+	if (!$trackbacks->isEmpty()) {
+		showComments($trackbacks,$has_action);
+	} else {
+		echo '<p>'.__('No trackback').'</p>';
+	}
+	
+	echo '<h3>'.__('Comments').'</h3>';
+	if (!$comments->isEmpty()) {
+		showComments($comments,$has_action);
+	} else {
+		echo '<p>'.__('No comment').'</p>';
+	}
+	
+	if ($has_action) {
+		echo
+		'<div class="two-cols">'.
+		'<p class="col checkboxes-helpers"></p>'.
+		
+		'<p class="col right">'.__('Selected comments action:').' '.
+		form::combo('action',$combo_action).
+		form::hidden('redir',html::escapeURL($redir_url).'&amp;id='.$post_id.'&amp;co=1').
+		$core->formNonce().
+		'<input type="submit" value="'.__('ok').'" /></p>'.
+		'</div>'.
+		'</form>';
+	}
+	
+	echo '</div>';
+}
+
+/* Add a comment
+-------------------------------------------------------- */
+if ($post_id)
+{
+	echo
+	'<div class="multi-part" id="add-comment" title="'.__('Add a comment').'">'.
+	'<h3>'.__('Add a comment').'</h3>'.
+	
+	'<form action="comment.php" method="post" id="comment-form">'.
+	'<fieldset class="constrained">'.
+	'<p><label class="required" title="'.__('Required field').'">'.__('Name:').
+	form::field('comment_author',30,255,html::escapeHTML($core->auth->getInfo('user_cn'))).
+	'</label></p>'.
+	
+	'<p><label>'.__('Email:').
+	form::field('comment_email',30,255,html::escapeHTML($core->auth->getInfo('user_email'))).
+	'</label></p>'.
+	
+	'<p><label>'.__('Web site:').
+	form::field('comment_site',30,255,html::escapeHTML($core->auth->getInfo('user_url'))).
+	'</label></p>'.
+	
+	'<p class="area"><label for="comment_content" class="required" title="'.
+	__('Required field').'">'.__('Comment:').'</label> '.
+	form::textarea('comment_content',50,8,html::escapeHTML('')).
+	'</p>'.
+	
+	'<p>'.form::hidden('post_id',$post_id).
+	$core->formNonce().
+	'<input type="submit" name="add" value="'.__('save').'" /></p>'.
+	'</fieldset>'.
+	'</form>'.
+	'</div>';
+}
+
+
+# Show comments or trackbacks
+function showComments($rs,$has_action)
+{
+	echo
+	'<table class="comments-list"><tr>'.
+	'<th colspan="2">'.__('Author').'</th>'.
+	'<th>'.__('Date').'</th>'.
+	'<th class="nowrap">'.__('IP address').'</th>'.
+	'<th>'.__('Status').'</th>'.
+	'<th>&nbsp;</th>'.
+	'</tr>';
+	
+	while($rs->fetch())
+	{
+		$comment_url = 'comment.php?id='.$rs->comment_id;
+		
+		$img = '<img alt="%1$s" title="%1$s" src="images/%2$s" />';
+		switch ($rs->comment_status) {
+			case 1:
+				$img_status = sprintf($img,__('published'),'check-on.png');
+				break;
+			case 0:
+				$img_status = sprintf($img,__('unpublished'),'check-off.png');
+				break;
+			case -1:
+				$img_status = sprintf($img,__('pending'),'check-wrn.png');
+				break;
+			case -2:
+				$img_status = sprintf($img,__('junk'),'junk.png');
+				break;
+		}
+		
+		echo
+		'<tr class="line'.($rs->comment_status != 1 ? ' offline' : '').'"'.
+		' id="c'.$rs->comment_id.'">'.
+		
+		'<td class="nowrap">'.
+		($has_action ? form::checkbox(array('comments[]'),$rs->comment_id,'','','',0) : '').'</td>'.
+		'<td class="maximal">'.$rs->comment_author.'</td>'.
+		'<td class="nowrap">'.dt::dt2str(__('%Y-%m-%d %H:%M'),$rs->comment_dt).'</td>'.
+		'<td class="nowrap"><a href="comments.php?ip='.$rs->comment_ip.'">'.$rs->comment_ip.'</a></td>'.
+		'<td class="nowrap status">'.$img_status.'</td>'.
+		'<td class="nowrap status"><a href="'.$comment_url.'">'.
+		'<img src="images/edit-mini.png" alt="" title="'.__('Edit this comment').'" /></a></td>'.
+		
+		'</tr>';
+	}
+	
+	echo '</table>';
 }
 ?>
 	</body>
