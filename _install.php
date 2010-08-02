@@ -16,7 +16,6 @@ if (version_compare($installed_version,$this_version,'>=')) {
 	return;
 }
 
-$core->blog->settings->addNamespace('flatpages');
 $core->setVersion('flatPages',$this_version);
 return true;
 ?>
