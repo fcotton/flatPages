@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-02 23:52+0200\n"
+"POT-Creation-Date: 2010-08-03 00:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: _admin.php:14 _admin.php:33
+#: _admin.php:14 _admin.php:33 inc/page.php:288 inc/page.php:321
+#: inc/panel.php:67 inc/panel.php:76
 msgid "FlatPages"
 msgstr ""
 
@@ -26,4 +27,277 @@ msgstr ""
 
 #: _prepend.php:122
 msgid "You must provide a valid email address."
+msgstr ""
+
+#: inc/lib.flatpages.php:57
+msgid "No page"
+msgstr ""
+
+#: inc/lib.flatpages.php:65
+msgid "Title"
+msgstr ""
+
+#: inc/lib.flatpages.php:66
+msgid "Slug"
+msgstr ""
+
+#: inc/lib.flatpages.php:67
+msgid "Template"
+msgstr ""
+
+#: inc/lib.flatpages.php:68 inc/page.php:564
+msgid "Date"
+msgstr ""
+
+#: inc/lib.flatpages.php:69 inc/page.php:563
+msgid "Author"
+msgstr ""
+
+#: inc/lib.flatpages.php:70 inc/page.php:491 inc/page.php:506
+msgid "Comments"
+msgstr ""
+
+#: inc/lib.flatpages.php:71 inc/page.php:497
+msgid "Trackbacks"
+msgstr ""
+
+#: inc/lib.flatpages.php:72 inc/page.php:566
+msgid "Status"
+msgstr ""
+
+#: inc/lib.flatpages.php:79 inc/lib.flatpages.php:86
+msgid "Page(s)"
+msgstr ""
+
+#: inc/lib.flatpages.php:94 inc/page.php:576
+msgid "published"
+msgstr ""
+
+#: inc/lib.flatpages.php:95 inc/page.php:579
+msgid "unpublished"
+msgstr ""
+
+#: inc/lib.flatpages.php:96 inc/page.php:582
+msgid "pending"
+msgstr ""
+
+#: inc/lib.flatpages.php:101
+msgid "protected"
+msgstr ""
+
+#: inc/lib.flatpages.php:119 inc/page.php:595
+msgid "%Y-%m-%d %H:%M"
+msgstr ""
+
+#: inc/page.php:37 inc/panel.php:83
+msgid "New flatpage"
+msgstr ""
+
+#: inc/page.php:64 inc/page.php:67 inc/page.php:71
+msgid "Most used"
+msgstr ""
+
+#: inc/page.php:64 inc/page.php:68
+msgid "Available"
+msgstr ""
+
+#: inc/page.php:89
+msgid "This page does not exist."
+msgstr ""
+
+#: inc/page.php:112 inc/page.php:345
+msgid "Edit page"
+msgstr ""
+
+#: inc/page.php:304
+msgid "Page has been successfully updated."
+msgstr ""
+
+#: inc/page.php:307
+msgid "Page has been successfully created."
+msgstr ""
+
+#: inc/page.php:310
+msgid "Attachment has been successfully removed."
+msgstr ""
+
+#: inc/page.php:318
+msgid "Don't forget to validate your XHTML conversion by saving your post."
+msgstr ""
+
+#: inc/page.php:324
+msgid "View page"
+msgstr ""
+
+#: inc/page.php:332
+msgid "Preview page"
+msgstr ""
+
+#: inc/page.php:348
+msgid "Page status:"
+msgstr ""
+
+#: inc/page.php:351
+msgid "Published on:"
+msgstr ""
+
+#: inc/page.php:354
+msgid "Text formating:"
+msgstr ""
+
+#: inc/page.php:356
+msgid "Convert to XHTML"
+msgstr ""
+
+#: inc/page.php:359
+msgid "Accept comments"
+msgstr ""
+
+#: inc/page.php:361
+msgid "Accept trackbacks"
+msgstr ""
+
+#: inc/page.php:362
+msgid "Page lang:"
+msgstr ""
+
+#: inc/page.php:365
+msgid "Page password:"
+msgstr ""
+
+#: inc/page.php:369
+msgid "Basename:"
+msgstr ""
+
+#: inc/page.php:373
+msgid ""
+"Warning: If you set the URL manually, it may conflict with another entry."
+msgstr ""
+
+#: inc/page.php:376
+msgid "Template:"
+msgstr ""
+
+#: inc/page.php:382
+msgid "Attachments"
+msgstr ""
+
+#: inc/page.php:397
+msgid "open"
+msgstr ""
+
+#: inc/page.php:401
+msgid "remove"
+msgstr ""
+
+#: inc/page.php:410
+msgid "No attachment."
+msgstr ""
+
+#: inc/page.php:412
+msgid "Add files to this page"
+msgstr ""
+
+#: inc/page.php:422 inc/page.php:430 inc/page.php:537 inc/page.php:547
+msgid "Required field"
+msgstr ""
+
+#: inc/page.php:422
+msgid "Title:"
+msgstr ""
+
+#: inc/page.php:426
+msgid "Summary:"
+msgstr ""
+
+#: inc/page.php:431
+msgid "Content:"
+msgstr ""
+
+#: inc/page.php:435
+msgid "Notes:"
+msgstr ""
+
+#: inc/page.php:447 inc/page.php:552
+msgid "save"
+msgstr ""
+
+#: inc/page.php:449 inc/page.php:485 inc/panel.php:54
+msgid "delete"
+msgstr ""
+
+#: inc/page.php:478 inc/panel.php:46
+msgid "publish"
+msgstr ""
+
+#: inc/page.php:479 inc/panel.php:47
+msgid "unpublish"
+msgstr ""
+
+#: inc/page.php:480 inc/panel.php:48
+msgid "mark as pending"
+msgstr ""
+
+#: inc/page.php:481
+msgid "mark as junk"
+msgstr ""
+
+#: inc/page.php:503
+msgid "No trackback"
+msgstr ""
+
+#: inc/page.php:511
+msgid "No comment"
+msgstr ""
+
+#: inc/page.php:518
+msgid "Selected comments action:"
+msgstr ""
+
+#: inc/page.php:522 inc/panel.php:94
+msgid "ok"
+msgstr ""
+
+#: inc/page.php:533 inc/page.php:534
+msgid "Add a comment"
+msgstr ""
+
+#: inc/page.php:537
+msgid "Name:"
+msgstr ""
+
+#: inc/page.php:540
+msgid "Email:"
+msgstr ""
+
+#: inc/page.php:543
+msgid "Web site:"
+msgstr ""
+
+#: inc/page.php:547
+msgid "Comment:"
+msgstr ""
+
+#: inc/page.php:565
+msgid "IP address"
+msgstr ""
+
+#: inc/page.php:585
+msgid "junk"
+msgstr ""
+
+#: inc/page.php:599
+msgid "Edit this comment"
+msgstr ""
+
+#: inc/panel.php:51
+msgid "change author"
+msgstr ""
+
+#: inc/panel.php:82
+msgid "Manage pages"
+msgstr ""
+
+#: inc/panel.php:92
+msgid "Selected entries action:"
 msgstr ""

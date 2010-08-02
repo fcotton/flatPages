@@ -1,29 +1,335 @@
-# French translations for PACKAGE package.
-# Copyright (C) 2010 THE PACKAGE'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Florent Cotton <>, 2010.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: flatPages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-02 23:52+0200\n"
-"PO-Revision-Date: 2010-08-02 23:54+0200\n"
-"Last-Translator: Florent Cotton <>\n"
-"Language-Team: French\n"
+"POT-Creation-Date: 2010-08-03 00:19+0200\n"
+"PO-Revision-Date: 2010-08-03 01:24+0100\n"
+"Last-Translator: Pep <pep@dotclear.net>\n"
+"Language-Team:  <contact@turbinagaz.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
 
-#: _admin.php:14 _admin.php:33
+#: _admin.php:14
+#: _admin.php:33
+#: inc/page.php:288
+#: inc/page.php:321
+#: inc/panel.php:67
+#: inc/panel.php:76
 msgid "FlatPages"
-msgstr ""
+msgstr "FlatPages"
 
 #: _admin.php:21
 msgid "manage flatpages"
-msgstr ""
+msgstr "gérer les flatpages"
 
 #: _prepend.php:122
 msgid "You must provide a valid email address."
-msgstr ""
+msgstr "Vous devez fournir une "
+
+#: inc/lib.flatpages.php:57
+msgid "No page"
+msgstr "Aucune page"
+
+#: inc/lib.flatpages.php:65
+msgid "Title"
+msgstr "Titre"
+
+#: inc/lib.flatpages.php:66
+msgid "Slug"
+msgstr "Emplacement"
+
+#: inc/lib.flatpages.php:67
+msgid "Template"
+msgstr "Gabarit"
+
+#: inc/lib.flatpages.php:68
+#: inc/page.php:564
+msgid "Date"
+msgstr "Date"
+
+#: inc/lib.flatpages.php:69
+#: inc/page.php:563
+msgid "Author"
+msgstr "Auteur"
+
+#: inc/lib.flatpages.php:70
+#: inc/page.php:491
+#: inc/page.php:506
+msgid "Comments"
+msgstr "Commentaires"
+
+#: inc/lib.flatpages.php:71
+#: inc/page.php:497
+msgid "Trackbacks"
+msgstr "Rétroliens"
+
+#: inc/lib.flatpages.php:72
+#: inc/page.php:566
+msgid "Status"
+msgstr "État"
+
+#: inc/lib.flatpages.php:79
+#: inc/lib.flatpages.php:86
+msgid "Page(s)"
+msgstr "Page(s)"
+
+#: inc/lib.flatpages.php:94
+#: inc/page.php:576
+msgid "published"
+msgstr "publié"
+
+#: inc/lib.flatpages.php:95
+#: inc/page.php:579
+msgid "unpublished"
+msgstr "hors ligne"
+
+#: inc/lib.flatpages.php:96
+#: inc/page.php:582
+msgid "pending"
+msgstr "en attente"
+
+#: inc/lib.flatpages.php:101
+msgid "protected"
+msgstr "protégé"
+
+#: inc/lib.flatpages.php:119
+#: inc/page.php:595
+msgid "%Y-%m-%d %H:%M"
+msgstr "%Y-%m-%d %H:%M"
+
+#: inc/page.php:37
+#: inc/panel.php:83
+msgid "New flatpage"
+msgstr "Nouvelle flatpage"
+
+#: inc/page.php:64
+#: inc/page.php:67
+#: inc/page.php:71
+msgid "Most used"
+msgstr "Plus utilisées"
+
+#: inc/page.php:64
+#: inc/page.php:68
+msgid "Available"
+msgstr "Disponible"
+
+#: inc/page.php:89
+msgid "This page does not exist."
+msgstr "Cette page n'existe pas."
+
+#: inc/page.php:112
+#: inc/page.php:345
+msgid "Edit page"
+msgstr "Éditer la page"
+
+#: inc/page.php:304
+msgid "Page has been successfully updated."
+msgstr "La page a été mise à jour avec succès."
+
+#: inc/page.php:307
+msgid "Page has been successfully created."
+msgstr "La page a été créée avec succès."
+
+#: inc/page.php:310
+msgid "Attachment has been successfully removed."
+msgstr "Pièce jointe retirée avec succès."
+
+#: inc/page.php:318
+msgid "Don't forget to validate your XHTML conversion by saving your post."
+msgstr "Enregistrez votre billet pour valider la transformation en XHTML."
+
+#: inc/page.php:324
+msgid "View page"
+msgstr "Voir la page"
+
+#: inc/page.php:332
+msgid "Preview page"
+msgstr "Prévisualiser la page"
+
+#: inc/page.php:348
+msgid "Page status:"
+msgstr "État de la page :"
+
+#: inc/page.php:351
+msgid "Published on:"
+msgstr "Publié le :"
+
+#: inc/page.php:354
+msgid "Text formating:"
+msgstr "Format du texte :"
+
+#: inc/page.php:356
+msgid "Convert to XHTML"
+msgstr "Convertir en XHTML"
+
+#: inc/page.php:359
+msgid "Accept comments"
+msgstr "Accepter les commentaires"
+
+#: inc/page.php:361
+msgid "Accept trackbacks"
+msgstr "Accepter les rétroliens"
+
+#: inc/page.php:362
+msgid "Page lang:"
+msgstr "Langue de la page :"
+
+#: inc/page.php:365
+msgid "Page password:"
+msgstr "Mot de passe de la page :"
+
+#: inc/page.php:369
+msgid "Basename:"
+msgstr "URL spécifique :"
+
+#: inc/page.php:373
+msgid "Warning: If you set the URL manually, it may conflict with another entry."
+msgstr "Attention : si vous indiquez l'URL manuellement, celle-ci peut entrer en conflit avec une autre page."
+
+#: inc/page.php:376
+msgid "Template:"
+msgstr "Gabarit spécifique :"
+
+#: inc/page.php:382
+msgid "Attachments"
+msgstr "Pièces jointes"
+
+#: inc/page.php:397
+msgid "open"
+msgstr "ouvrir"
+
+#: inc/page.php:401
+msgid "remove"
+msgstr "supprimer"
+
+#: inc/page.php:410
+msgid "No attachment."
+msgstr "Aucune pièce jointe."
+
+#: inc/page.php:412
+msgid "Add files to this page"
+msgstr "Ajouter un fichier à la page"
+
+#: inc/page.php:422
+#: inc/page.php:430
+#: inc/page.php:537
+#: inc/page.php:547
+msgid "Required field"
+msgstr "Champ obligatoire"
+
+#: inc/page.php:422
+msgid "Title:"
+msgstr "Titre :"
+
+#: inc/page.php:426
+msgid "Summary:"
+msgstr "Extrait :"
+
+#: inc/page.php:431
+msgid "Content:"
+msgstr "Contenu :"
+
+#: inc/page.php:435
+msgid "Notes:"
+msgstr "Notes :"
+
+#: inc/page.php:447
+#: inc/page.php:552
+msgid "save"
+msgstr "enregistrer"
+
+#: inc/page.php:449
+#: inc/page.php:485
+#: inc/panel.php:54
+msgid "delete"
+msgstr "supprimer"
+
+#: inc/page.php:478
+#: inc/panel.php:46
+msgid "publish"
+msgstr "publier"
+
+#: inc/page.php:479
+#: inc/panel.php:47
+msgid "unpublish"
+msgstr "mettre hors ligne"
+
+#: inc/page.php:480
+#: inc/panel.php:48
+msgid "mark as pending"
+msgstr "mettre en attente"
+
+#: inc/page.php:481
+msgid "mark as junk"
+msgstr "marquer comme indésirable"
+
+#: inc/page.php:503
+msgid "No trackback"
+msgstr "Aucun rétrolien"
+
+#: inc/page.php:511
+msgid "No comment"
+msgstr "Aucun commentaire"
+
+#: inc/page.php:518
+msgid "Selected comments action:"
+msgstr "Action sur les commentaires sélectionnés :"
+
+#: inc/page.php:522
+#: inc/panel.php:94
+msgid "ok"
+msgstr "ok"
+
+#: inc/page.php:533
+#: inc/page.php:534
+msgid "Add a comment"
+msgstr "Ajouter un commentaire"
+
+#: inc/page.php:537
+msgid "Name:"
+msgstr "Nom :"
+
+#: inc/page.php:540
+msgid "Email:"
+msgstr "Email :"
+
+#: inc/page.php:543
+msgid "Web site:"
+msgstr "Site web :"
+
+#: inc/page.php:547
+msgid "Comment:"
+msgstr "Commentaire :"
+
+#: inc/page.php:565
+msgid "IP address"
+msgstr "Adresse IP"
+
+#: inc/page.php:585
+msgid "junk"
+msgstr "indésirable"
+
+#: inc/page.php:599
+msgid "Edit this comment"
+msgstr "Modifier ce commentaire"
+
+#: inc/panel.php:51
+msgid "change author"
+msgstr "changer l'auteur"
+
+#: inc/panel.php:82
+msgid "Manage pages"
+msgstr "Gérer les pages"
+
+#: inc/panel.php:92
+msgid "Selected entries action:"
+msgstr "Action sur les entrées sélectionnées :"
+
