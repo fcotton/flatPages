@@ -14,7 +14,7 @@ $this->registerModule(
 	/* Name */		"FlatPages",
 	/* Description*/	"Django-like flatpages for Dotclear 2.2.x",
 	/* Author */		"Pep",
-	/* Version */		'1.0-alpha2',
+	/* Version */		'1.0-alpha3',
 	/* Permissions */	'contentadmin,pages'
 );
 ?>

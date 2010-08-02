@@ -264,7 +264,7 @@ if (!empty($_GET['co'])) {
 ?>
 <html>
 <head>
-	<title><?php echo __('Related pages'); ?></title>
+	<title><?php echo __('FlatPages'); ?></title>
 <?php
 echo dcPage::jsDatePicker().
 	dcPage::jsToolBar().

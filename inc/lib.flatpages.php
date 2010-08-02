@@ -62,11 +62,13 @@ class adminFlatPagesList extends adminGenericList
 			
 			$html_block =
 			'<table class="clear"><tr>'.
-			'<th colspan="2">'.__('Slug').'</th>'.
-			'<th>'.__('Title').'</th>'.
+			'<th colspan="2">'.__('Title').'</th>'.
+			'<th>'.__('Slug').'</th>'.
 			'<th>'.__('Template').'</th>'.
 			'<th>'.__('Date').'</th>'.
 			'<th>'.__('Author').'</th>'.
+			'<th>'.__('Comments').'</th>'.
+			'<th>'.__('Trackbacks').'</th>'.
 			'<th>'.__('Status').'</th>'.
 			'</tr>%s</table>';
 			
@@ -110,12 +112,14 @@ class adminFlatPagesList extends adminGenericList
 		$res .=
 		'<td class="nowrap">'.
 		form::checkbox(array('entries[]'),$this->rs->post_id,'','','',!$this->rs->isEditable()).'</td>'.
-		'<td class="nowrap">'.$this->rs->post_url.'</td>'.
 		'<td class="maximal"><a href="plugin.php?p=flatPages&amp;do=edit&amp;id='.$this->rs->post_id.'">'.
 		html::escapeHTML($this->rs->post_title).'</a></td>'.
+		'<td class="nowrap">'.$this->rs->post_url.'</td>'.
 		'<td class="nowrap">'.$template.'</td>'.
 		'<td class="nowrap">'.dt::dt2str(__('%Y-%m-%d %H:%M'),$this->rs->post_dt).'</td>'.
 		'<td class="nowrap">'.$this->rs->user_id.'</td>'.
+		'<td class="nowrap">'.$this->rs->nb_comment.'</td>'.
+		'<td class="nowrap">'.$this->rs->nb_trackback.'</td>'.
 		'<td class="nowrap status">'.$img_status.' '.$protected.'</td>'.
 		'</tr>';
 		

@@ -69,7 +69,7 @@ $core->callBehavior('adminPagesActionsCombo',array(&$combo_action));
 		echo
 		dcPage::jsToolMan().
 		dcPage::jsPageTabs($default_tab).
-		dcPage::jsLoad('index.php?pf=flatPages/js/_pages.js');
+		dcPage::jsLoad('js/_posts_list.js');
 		?>
 	</head>
 	<body>
@@ -85,14 +85,14 @@ echo
 if (!$core->error->flag())
 {
 	$page_list->display($page,$nb_per_page,
-	'<form action="posts_actions.php" method="post" id="form-pages">'.
+	'<form action="posts_actions.php" method="post" id="form-entries">'.
 	'%s'.
 	'<div class="two-cols">'.
 	'<p class="col checkboxes-helpers"></p>'.
 	'<p class="col right">'.__('Selected entries action:').
 	form::combo('action',$combo_action).
 	'<input type="submit" value="'.__('ok').'" /></p>'.
-	form::hidden(array('post_type'),'related').
+	form::hidden(array('post_type'),'flatpage').
 	form::hidden(array('redir'),html::escapeHTML($_SERVER['REQUEST_URI'])).
 	$core->formNonce().
 	'</div>'.
